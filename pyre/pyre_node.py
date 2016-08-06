@@ -442,6 +442,7 @@ class PyreNode(object):
         try:
             ipaddress, frame = self.beacon_socket.recv_multipart()
         except ValueError:
+            self._terminated = True
             return
 
         beacon = struct.unpack('cccb16sH', frame)
